@@ -25,7 +25,12 @@ public class UserService {
 
                String string=new String(bytes);
                 UserData userData=new Gson().fromJson(string,UserData.class);
-                listener.onSuccess(userData);
+                if(userData.getState()==1){
+                    listener.onSuccess(userData);
+                }else{
+                    listener.onFailure(userData.getMsg());
+                }
+
             }
 
             @Override
