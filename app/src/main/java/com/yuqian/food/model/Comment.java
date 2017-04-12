@@ -8,11 +8,15 @@ public class Comment {
 
     private int id;
 
-    private String foodComment;
+    private String foodcomment;
 
-    private int userId;
+    private int userid;
 
-    private int foodId;
+    private int foodid;
+
+    private String username;
+
+    private String userphotourl;
 
     public int getId() {
         return id;
@@ -22,28 +26,44 @@ public class Comment {
         this.id = id;
     }
 
-    public String getFoodComment() {
-        return foodComment;
+    public String getFoodcomment() {
+        return foodcomment;
     }
 
-    public void setFoodComment(String foodComment) {
-        this.foodComment = foodComment;
+    public void setFoodcomment(String foodcomment) {
+        this.foodcomment = foodcomment;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getUserid() {
+        return userid;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
-    public int getFoodId() {
-        return foodId;
+    public int getFoodid() {
+        return foodid;
     }
 
-    public void setFoodId(int foodId) {
-        this.foodId = foodId;
+    public void setFoodid(int foodid) {
+        this.foodid = foodid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUserphotourl() {
+        return userphotourl;
+    }
+
+    public void setUserphotourl(String userphotourl) {
+        this.userphotourl = userphotourl;
     }
 }
 

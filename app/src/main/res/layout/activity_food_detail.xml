@@ -26,7 +26,7 @@
             android:layout_height="150dip"
             android:padding="10dp"
             android:src="@drawable/userimage"/>
-        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
             android:orientation="vertical">
             <RelativeLayout android:layout_width="match_parent"
                 android:paddingLeft="10dp"
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:layout_marginTop="30px"
+                android:layout_marginTop="3px"
                 android:text="菜品名字"
                 android:textColor="@color/white"
                 android:background="#72d572"
@@ -68,7 +68,7 @@
 
             <TextView
                 android:id="@+id/food_list_item_foodprice"
-                android:layout_marginTop="50px"
+                android:layout_marginTop="5px"
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,11 +78,11 @@
                 android:textSize="14sp"/>
             <TextView
                 android:id="@+id/food_list_item_food_describe"
-                android:layout_marginTop="50px"
+                android:layout_marginTop="5px"
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="3"
+                android:maxLines="5"
                 android:textColor="@color/black"
                 android:text="描述"
                 android:textSize="14sp"/>

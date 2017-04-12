@@ -31,6 +31,7 @@ public class FoodListActivity extends AppCompatActivity implements AdapterView.O
         foods=(ArrayList<Food>) bundle.getSerializable("foods");
         ListView listView= (ListView) findViewById(R.id.food_list);
         listView.setAdapter(new MyAdapter());
+        listView.setOnItemClickListener(this);
 
     }
 
