@@ -22,7 +22,6 @@ public class FoodService {
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
                 Log.i("user_json",new String(bytes));
-
                 String string=new String(bytes);
                 FoodListData foodListData=new Gson().fromJson(string,FoodListData.class);
                 listener.onSuccess(foodListData);

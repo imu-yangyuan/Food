@@ -1,10 +1,14 @@
 package com.yuqian.food.UI;
 
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,6 +19,7 @@ import com.yuqian.food.R;
 import com.yuqian.food.SmartImageViewByUrl.SmartImageView;
 import com.yuqian.food.model.Comment;
 import com.yuqian.food.model.CommentListData;
+import com.yuqian.food.model.CommonData;
 import com.yuqian.food.model.Food;
 import com.yuqian.food.service.Service;
 import com.yuqian.food.util.ToastManager;
@@ -24,15 +29,41 @@ import java.util.ArrayList;
 
 public class FoodDetailActivity extends AppCompatActivity {
 private ArrayList<Comment> comments;
+    private Food food;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detail);
         Bundle bundle = this.getIntent().getExtras();
-        Food food=(Food) bundle.getSerializable("food");
+        food=(Food) bundle.getSerializable("food");
         ((TextView)findViewById(R.id.food_list_item_foodname)).setText(food.getFoodName());
         ((TextView)findViewById(R.id.food_list_item_foodprice)).setText("价格：￥"+food.getFoodPrice());
         ((TextView)findViewById(R.id.food_list_item_food_describe)).setText("描述："+food.getFoodDescribe());
+        ((TextView)findViewById(R.id.btn_comment_food)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               final EditText editText1=new EditText(FoodDetailActivity.this);
+                editText1.setTextColor(Color.parseColor("#000000"));
+                editText1.setWidth(1000);
+                new AlertDialog.Builder(FoodDetailActivity.this,android.R.style.Animation_Dialog)
+                        .setTitle("输入评论")
+                        .setView(editText1)
+                        .setPositiveButton("提交", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                String commenttxt=editText1.getText().toString();
+                                if(commenttxt==null&&commenttxt==""){
+                                    ToastManager.toast(FoodDetailActivity.this,"请输入内容！");
+                                }
+                                else{
+                                    addComment(commenttxt);
+                                    }
+                            }
+                        })
+                        .setNegativeButton("取消",null)
+                        .show();
+            }
+        });
         SmartImageView smartImageView=(SmartImageView) findViewById(R.id.food_list_item_food_img);
         smartImageView.setImageUrl(food.getFoodPhotoUrl());
         final ListView listView=(ListView) findViewById(R.id.lv_food_item_comments);
@@ -58,6 +89,30 @@ private ArrayList<Comment> comments;
         });
 
 
+    }
+    private void addComment(final String comment){
+        Service service=new Service();
+        RequestParams requestParams=new RequestParams();
+        requestParams.put("foodId",food.getId());
+        requestParams.put("userId",1);//设置请求的userId参数
+        requestParams.put("comment",comment);
+        service.get(FoodDetailActivity.this, "addComment.php", requestParams, new Listener() {
+            @Override
+            public void onSuccess(Object object) {
+                String string=new String((byte[])object);
+                CommonData commonData=new Gson().fromJson(string,CommonData.class);
+                if(commonData.getState()==0){
+                    ToastManager.toast(FoodDetailActivity.this,"评论失败！");
+                }else{
+                    ToastManager.toast(FoodDetailActivity.this,"评论成功！");
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                ToastManager.toast(FoodDetailActivity.this,"评论失败！");
+            }
+        });
     }
     private class MyAdapter extends BaseAdapter {
         @Override
