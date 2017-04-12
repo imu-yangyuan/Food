@@ -1,4 +1,4 @@
-package com.yuqian.food;
+package com.yuqian.food.UI;
 
 import android.app.Activity;
 

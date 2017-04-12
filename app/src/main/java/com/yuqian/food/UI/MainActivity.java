@@ -1,6 +1,7 @@
-package com.yuqian.food;
+package com.yuqian.food.UI;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +12,16 @@ import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
 import com.yuqian.food.Listener.Listener;
+import com.yuqian.food.R;
+import com.yuqian.food.model.Food;
+import com.yuqian.food.model.FoodListData;
 import com.yuqian.food.model.UserData;
 import com.yuqian.food.model.UserModel;
+import com.yuqian.food.service.FoodService;
 import com.yuqian.food.service.UserService;
 import com.yuqian.food.util.ToastManager;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Button loginButton;
@@ -32,6 +39,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 login();
+            }
+        });
+        findViewById(R.id.button_test_food_list).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FoodService foodService=new FoodService();
+                RequestParams params=new RequestParams();
+                foodService.get(MainActivity.this, "getFoodList.php", params, new Listener() {
+                    @Override
+                    public void onSuccess(Object object) {
+
+                        Intent intent=new Intent(MainActivity.this,FoodListActivity.class);
+                        FoodListData foodListData=(FoodListData)object;
+                        ArrayList<Food> foods=foodListData.getFoods();
+                        intent.putExtra("foods",foods);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(String msg) {
+
+                    }
+                });
             }
         });
 
@@ -56,7 +86,11 @@ public class MainActivity extends AppCompatActivity {
                 ToastManager.toast(MainActivity.this,((UserData)object).getState()+"");
                 UserModel userModel=userData.getUserModel();
                 saveInfor(userModel);
-
+                if(userModel.getType()==0){
+                    //启动学生界面
+                }else{
+                    //启动管理员界面
+                }
 
             }
 

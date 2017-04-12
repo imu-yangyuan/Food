@@ -43,7 +43,7 @@ public class HttpFileRequest {
 
         AsyncHttpClient client = new AsyncHttpClient();
         // 指定文件类型
-        String[] allowedContentTypes = new String[] { "image/png", "image/jpeg","video/mp4" };
+        String[] allowedContentTypes = new String[] {"com.me.imageView/png", "com.me.imageView/jpeg","video/mp4" };
         // 获取二进制数据如图片和其他文件
         client.get(url, new BinaryHttpResponseHandler(allowedContentTypes) {
 

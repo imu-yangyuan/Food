@@ -18,7 +18,7 @@ public class HttpRequest {
     /**
      * 服务器地,端口号与应用名组成的基本的URL
      * */
-    private static final String BASE_URL = "http://10.0.2.2:8666/";
+    private static final String BASE_URL = "http://10.0.2.2:8080/";
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     /**

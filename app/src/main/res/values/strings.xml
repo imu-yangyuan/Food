@@ -3,4 +3,7 @@
     <string name="user_name">账号</string>
     <string name="user_pass">密码</string>
     <string name="login">登录</string>
+    <string name="title_activity_food">FoodActivity</string>
+    <string name="title_activity_food_list">FoodListActivity</string>
+    <string name="title_activity_food_detail">FoodDetailActivity</string>
 </resources>

@@ -7,7 +7,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/light_grey"
-              tools:context="com.yuqian.food.MainActivity"
+              tools:context="com.yuqian.food.UI.MainActivity"
               android:padding="@dimen/home_padding">
 
 
@@ -61,25 +61,31 @@
             android:textSize="20sp"
             fbutton:shadowEnabled="true"
     />
-<!--    <RelativeLayout android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="忘记密码？"
-                  android:layout_alignParentBottom="true"
-                  android:layout_alignParentLeft="true"
-                  android:textSize="15dp"
-                  android:textColor="#4A4AFF"
-                  android:id="@+id/login_losspass"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:clickable="true"
-                  android:text="新用户"
-                  android:layout_alignParentBottom="true"
-                  android:layout_alignParentRight="true"
-                  android:id="@+id/login_register"
-                  android:textSize="15dp"
-                  android:textColor="#4A4AFF"/>
-    </RelativeLayout>-->
+
+    <Button
+        android:id="@+id/button_test_food_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button_TestFoodList" />
+    <!--    <RelativeLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="忘记密码？"
+                      android:layout_alignParentBottom="true"
+                      android:layout_alignParentLeft="true"
+                      android:textSize="15dp"
+                      android:textColor="#4A4AFF"
+                      android:id="@+id/login_losspass"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:clickable="true"
+                      android:text="新用户"
+                      android:layout_alignParentBottom="true"
+                      android:layout_alignParentRight="true"
+                      android:id="@+id/login_register"
+                      android:textSize="15dp"
+                      android:textColor="#4A4AFF"/>
+        </RelativeLayout>-->
 
 </LinearLayout>
