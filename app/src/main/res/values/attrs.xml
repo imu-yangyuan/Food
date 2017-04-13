@@ -53,6 +53,10 @@
     <declare-styleable name="Themes">
         <attr name="waveViewStyle" format="reference"/>
     </declare-styleable>
+    <declare-styleable name="RoundAngleImageView">
+        <attr name="roundWidth" format="dimension" />
+        <attr name="roundHeight" format="dimension" />
+    </declare-styleable>
 
 </resources>
 
