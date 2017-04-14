@@ -24,7 +24,11 @@ public class FoodService {
                 Log.i("user_json",new String(bytes));
                 String string=new String(bytes);
                 FoodListData foodListData=new Gson().fromJson(string,FoodListData.class);
-                listener.onSuccess(foodListData);
+                if(foodListData.getState()==1){
+                    listener.onSuccess(foodListData);
+                }else {
+                    listener.onFailure(foodListData.getMsg());
+                }
 
             }
 

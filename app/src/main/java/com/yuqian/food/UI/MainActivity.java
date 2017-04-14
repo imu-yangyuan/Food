@@ -1,10 +1,10 @@
 package com.yuqian.food.UI;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +23,7 @@ import com.yuqian.food.util.ToastManager;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     private Button loginButton;
     private EditText usernameEditText;
     private EditText passwordEditText;
@@ -46,6 +46,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FoodService foodService=new FoodService();
                 RequestParams params=new RequestParams();
+                Listener listener=new Listener() {
+                    @Override
+                    public void onSuccess(Object object) {
+                        System.out.println("");
+                    }
+
+                    @Override
+                    public void onFailure(String msg) {
+                        System.out.println("");
+                    }
+                };
                 foodService.get(MainActivity.this, "getFoodList.php", params, new Listener() {
                     @Override
                     public void onSuccess(Object object) {

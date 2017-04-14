@@ -1,8 +1,8 @@
 package com.yuqian.food.UI;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 
 
-public class FoodListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class FoodListActivity extends Activity implements AdapterView.OnItemClickListener{
     private ArrayList<Food> foods;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

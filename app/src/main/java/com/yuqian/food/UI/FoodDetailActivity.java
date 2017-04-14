@@ -1,10 +1,10 @@
 package com.yuqian.food.UI;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -27,7 +27,7 @@ import com.yuqian.food.viewUtil.CircleSmartImageView;
 
 import java.util.ArrayList;
 
-public class FoodDetailActivity extends AppCompatActivity {
+public class FoodDetailActivity extends Activity {
 private ArrayList<Comment> comments;
     private Food food;
     @Override

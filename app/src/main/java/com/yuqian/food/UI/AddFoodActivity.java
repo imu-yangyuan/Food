@@ -1,12 +1,12 @@
 package com.yuqian.food.UI;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,7 +29,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class AddFoodActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AddFoodActivity extends Activity implements AdapterView.OnItemSelectedListener {
     private ArrayList<String> data_list;
     private ImageView image;
     private File foodImgFile = null;
@@ -158,14 +158,14 @@ public class AddFoodActivity extends AppCompatActivity implements AdapterView.On
         requestParams.put("foodPrice",foodPrice);
         requestParams.put("restaurantNum",data_list.get(selectIndex));
         if(foodImgFile==null){
-            ToastManager.toast(AddFoodActivity.this,"请选择菜图片");
+            ToastManager.toast(AddFoodActivity.this,"请选择菜品图片");
             return;
         }else{
             try {
-                requestParams.put("",foodImgFile);
+                requestParams.put("foodPictureFile",foodImgFile);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                ToastManager.toast(AddFoodActivity.this,"请选择菜图片");
+                ToastManager.toast(AddFoodActivity.this,"请选择菜品图片");
                 return;
             }
             service.get(AddFoodActivity.this, url, requestParams, new Listener() {
@@ -183,7 +183,6 @@ public class AddFoodActivity extends AppCompatActivity implements AdapterView.On
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-
                     }
                 }
 
