@@ -1,7 +1,9 @@
 package com.yuqian.food.UI;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -157,6 +159,16 @@ public class AddFoodActivity extends Activity implements AdapterView.OnItemSelec
         requestParams.put("foodDescribe",foodDescribe);
         requestParams.put("foodPrice",foodPrice);
         requestParams.put("restaurantNum",data_list.get(selectIndex));
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+       /* Integer userId = preferences.getInt("userId",0);
+        String accessKey=preferences.getString("accessKey","");
+        Integer userType=preferences.getInt("type",0);
+        String userName=preferences.getString("userName","");
+        if(userType!=2){
+            this.finish();
+        }
+        requestParams.put("userId",userId);
+        requestParams.put("accessKey",accessKey);*/
         if(foodImgFile==null){
             ToastManager.toast(AddFoodActivity.this,"请选择菜品图片");
             return;

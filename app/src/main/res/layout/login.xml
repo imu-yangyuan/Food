@@ -7,18 +7,18 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/light_grey"
-              tools:context="com.yuqian.food.UI.MainActivity"
+              tools:context="com.yuqian.food.UI.LoginActivity"
               android:padding="@dimen/home_padding">
 
     <com.yuqian.food.viewUtil.CircleSmartImageView
+        android:id="@+id/userimage"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="120dp"
-        android:id="@+id/userimage"
-        android:clickable="true"
-        android:src="@drawable/userimage"
         android:layout_gravity="center_horizontal"
-        />
+        android:layout_marginTop="40dp"
+        android:clickable="true"
+        android:src="@drawable/logo" />
+
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_marginTop="10dp"

@@ -10,15 +10,10 @@ public class UserModel {
     private String userName;
 
     private String password;
-    private int type;
 
-    public int getType() {
-        return type;
-    }
+    private Integer type;
 
-    public void setType(int type) {
-        this.type = type;
-    }
+
     private String accessKey;
 
     public String getAccessKey() {
@@ -51,5 +46,13 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }
